@@ -41,7 +41,7 @@ void bitcpy(void *_dest,      /* Address of the buffer to write to */
         uint8_t data = *source++;
         size_t bitsize = (count > 8) ? 8 : count;
         if (read_lhs > 0) {
-	    data <<= read_lhs;
+	    data <<= read_lhs; // Original code: RRR;
             if (bitsize > read_rhs)
                 data |= (*source >> read_rhs);
         }
@@ -58,7 +58,7 @@ void bitcpy(void *_dest,      /* Address of the buffer to write to */
             *dest = original | (data << write_rhs);
         } else {
             // Since write_lhs + bitsize is never >= 8, no out-of-bound access.
-            mask |= write_mask[write_lhs + bitsize];
+            mask |= write_mask[write_lhs + bitsize]; // Original code: DDD;
             *dest++ = (original & mask) | (data >> write_lhs);
         }
 
