@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdint.h>
 static inline uint16_t power_of_2(uint16_t n)
 {
     n |= n >> 1;
